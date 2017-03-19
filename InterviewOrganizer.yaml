@@ -1,0 +1,1355 @@
+swagger: '2.0'
+info:
+  title: Interview Organizer API
+  description: The backing Interview Organizer API
+  version: "0.0.1"
+# the domain of the service
+host: api.intervieworganizer.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: List Users
+      description: |
+        User endpoint that returns a list of users.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by user type.
+      tags:
+        - User
+      responses:
+        200:
+          description: An array of Users
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+  /user/{identifier}:
+    get:
+      summary: List User
+      description: |
+        The User endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a User.
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: A single user
+          schema:
+            $ref: '#/definitions/User'
+    delete:
+      summary: Delete a User
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a User.
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        204:
+          description: The User has been deleted.
+    post:
+      summary: Update a User
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a User.
+          required: true
+          type: string
+        - name: user
+          in: body
+          description: The payload of the User to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User
+      responses:
+        201:
+          description: The User has been updated.
+  /user:
+    put:
+      summary: Create a User
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: user
+          in: body
+          description: The unique identifier of a User.
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User
+      responses:
+        201:
+          description: The User has been created.
+  /contacts:
+    get:
+      summary: List Contacts
+      description: |
+        Contact endpoint that returns a list of contacts.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by contact type.
+      tags:
+        - Contact
+      responses:
+        200:
+          description: An array of Contacts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contact'
+  /contact/{identifier}:
+    get:
+      summary: List Contact
+      description: |
+        The Contact endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Contact.
+          required: true
+          type: string
+      tags:
+        - Contact
+      responses:
+        200:
+          description: A single contact
+          schema:
+            $ref: '#/definitions/Contact'
+    delete:
+      summary: Delete a Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Contact.
+          required: true
+          type: string
+      tags:
+        - Contact
+      responses:
+        204:
+          description: The Contact has been deleted.
+    post:
+      summary: Update a Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Contact.
+          required: true
+          type: string
+        - name: contact
+          in: body
+          description: The payload of the Contact to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+      tags:
+        - Contact
+      responses:
+        201:
+          description: The Contact has been updated.
+  /contact:
+    put:
+      summary: Create a Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: contact
+          in: body
+          description: The unique identifier of a Contact.
+          required: true
+          schema:
+            $ref: '#/definitions/Contact'
+      tags:
+        - Contact
+      responses:
+        201:
+          description: The Contact has been created.
+  /contact/Companies:
+    get:
+      summary: List Company Contacts
+      description: |
+        Contact endpoint that returns a list of contacts.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by contact type.
+      tags:
+        - Contact
+      responses:
+        200:
+          description: An array of Contacts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ContactCompany'
+  /contact/company/{identifier}:
+    get:
+      summary: List Company Contact
+      description: |
+        The Company Contact endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Company Contact.
+          required: true
+          type: string
+      tags:
+        - Contact
+      responses:
+        200:
+          description: A single contact
+          schema:
+            $ref: '#/definitions/ContactCompany'
+    delete:
+      summary: Delete a Company Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Company Contact.
+          required: true
+          type: string
+      tags:
+        - Contact
+      responses:
+        204:
+          description: The Company Contact has been deleted.
+    post:
+      summary: Update a Company Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Company Contact.
+          required: true
+          type: string
+        - name: contact
+          in: body
+          description: The payload of the Company Contact to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/ContactCompany'
+      tags:
+        - Contact
+      responses:
+        201:
+          description: The Company Contact has been updated.
+  /contact/company/:
+    put:
+      summary: Create a Company Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: contact
+          in: body
+          description: The unique identifier of a Company Contact.
+          required: true
+          schema:
+            $ref: '#/definitions/ContactCompany'
+      tags:
+        - Contact
+      responses:
+        201:
+          description: The Company Contact has been created.
+  /contact/persons:
+    get:
+      summary: List Person Contacts
+      description: |
+        Contact endpoint that returns a list of contacts.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by contact type.
+      tags:
+        - Contact
+      responses:
+        200:
+          description: An array of Person Contacts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ContactPerson'
+  /contact/person/{identifier}:
+    get:
+      summary: List Person Contact
+      description: |
+        The Person Contact endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Person Contact.
+          required: true
+          type: string
+      tags:
+        - Contact
+      responses:
+        200:
+          description: A single contact
+          schema:
+            $ref: '#/definitions/ContactPerson'
+    delete:
+      summary: Delete a Person Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Person Contact.
+          required: true
+          type: string
+      tags:
+        - Contact
+      responses:
+        204:
+          description: The Person Contact has been deleted.
+    post:
+      summary: Update a Person Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Person Contact.
+          required: true
+          type: string
+        - name: contact
+          in: body
+          description: The payload of the Person Contact to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/ContactPerson'
+      tags:
+        - Contact
+      responses:
+        201:
+          description: The Person Contact has been updated.
+  /contact/person:
+    put:
+      summary: Create a Person Contact
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: contact
+          in: body
+          description: The unique identifier of a Person Contact.
+          required: true
+          schema:
+            $ref: '#/definitions/ContactPerson'
+      tags:
+        - Contact
+      responses:
+        201:
+          description: The Person Contact has been created.
+  /documents:
+    get:
+      summary: List Documents
+      description: |
+        Document endpoint that returns a list of documents.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by document type.
+      tags:
+        - Document
+      responses:
+        200:
+          description: An array of Documents
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Document'
+  /document/{identifier}:
+    get:
+      summary: List Document
+      description: |
+        The Document endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Document.
+          required: true
+          type: string
+      tags:
+        - Document
+      responses:
+        200:
+          description: A single document
+          schema:
+            $ref: '#/definitions/Document'
+    delete:
+      summary: Delete a Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Document.
+          required: true
+          type: string
+      tags:
+        - Document
+      responses:
+        204:
+          description: The Document has been deleted.
+    post:
+      summary: Update a Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Document.
+          required: true
+          type: string
+        - name: document
+          in: body
+          description: The payload of the Document to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Document'
+      tags:
+        - Document
+      responses:
+        201:
+          description: The Document has been updated.
+  /document:
+    put:
+      summary: Create a Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: document
+          in: body
+          description: The unique identifier of a Document.
+          required: true
+          schema:
+            $ref: '#/definitions/Document'
+      tags:
+        - Document
+      responses:
+        201:
+          description: The Document has been created.
+  /document/coverLetters:
+    get:
+      summary: List Cover Letter Documents
+      description: |
+        Document endpoint that returns a list of documents.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by document type.
+      tags:
+        - Document
+      responses:
+        200:
+          description: An array of Cover Letter Documents
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DocumentCoverLetter'
+  /document/coverLetter/{identifier}:
+    get:
+      summary: List Cover Letter Document
+      description: |
+        The Document endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Cover Letter Document.
+          required: true
+          type: string
+      tags:
+        - Document
+      responses:
+        200:
+          description: A single document
+          schema:
+            $ref: '#/definitions/DocumentCoverLetter'
+    delete:
+      summary: Delete a Cover Letter Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Cover Letter Document.
+          required: true
+          type: string
+      tags:
+        - Document
+      responses:
+        204:
+          description: The Cover Letter Document has been deleted.
+    post:
+      summary: Update a Cover Letter Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Cover Letter Document.
+          required: true
+          type: string
+        - name: document
+          in: body
+          description: The payload of the Cover Letter Document to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/DocumentCoverLetter'
+      tags:
+        - Document
+      responses:
+        201:
+          description: The Cover Letter Document has been updated.
+  /document/coverLetter:
+    put:
+      summary: Create a Cover Letter Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: document
+          in: body
+          description: The unique identifier of a Cover Letter Document.
+          required: true
+          schema:
+            $ref: '#/definitions/DocumentCoverLetter'
+      tags:
+        - Document
+      responses:
+        201:
+          description: The Cover Letter Document has been created.
+  /document/resumes:
+    get:
+      summary: List Resume Documents
+      description: |
+        Document endpoint that returns a list of documents.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by document type.
+      tags:
+        - Document
+      responses:
+        200:
+          description: An array of Resume Documents
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DocumentResume'
+  /document/resume/{identifier}:
+    get:
+      summary: List Resume Document
+      description: |
+        The Document endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Resume Document.
+          required: true
+          type: string
+      tags:
+        - Document
+      responses:
+        200:
+          description: A single document
+          schema:
+            $ref: '#/definitions/DocumentResume'
+    delete:
+      summary: Delete a Resume Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Resume Document.
+          required: true
+          type: string
+      tags:
+        - Document
+      responses:
+        204:
+          description: The Resume Document has been deleted.
+    post:
+      summary: Update a Resume Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Resume Document.
+          required: true
+          type: string
+        - name: document
+          in: body
+          description: The payload of the Resume Document to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/DocumentResume'
+      tags:
+        - Document
+      responses:
+        201:
+          description: The Resume Document has been updated.
+  /document/resume:
+    put:
+      summary: Create a Resume Document
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: document
+          in: body
+          description: The unique identifier of a Resume Document.
+          required: true
+          schema:
+            $ref: '#/definitions/DocumentResume'
+      tags:
+        - Document
+      responses:
+        201:
+          description: The Resume Document has been created.
+  /interviews:
+    get:
+      summary: List Interviews
+      description: |
+        Interview endpoint that returns a list of interviews.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by interview type.
+      tags:
+        - Interview
+      responses:
+        200:
+          description: An array of Interviews
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Interview'
+  /interview/{identifier}:
+    get:
+      summary: List Interview
+      description: |
+        The Interview endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Interview.
+          required: true
+          type: string
+      tags:
+        - Interview
+      responses:
+        200:
+          description: A single interview
+          schema:
+            $ref: '#/definitions/Interview'
+    delete:
+      summary: Delete a Interview
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Interview.
+          required: true
+          type: string
+      tags:
+        - Interview
+      responses:
+        204:
+          description: The Interview has been deleted.
+    post:
+      summary: Update a Interview
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Interview.
+          required: true
+          type: string
+        - name: interview
+          in: body
+          description: The payload of the Interview to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Interview'
+      tags:
+        - Interview
+      responses:
+        201:
+          description: The Interview has been updated.
+  /jobs:
+    get:
+      summary: List Jobs
+      description: |
+        Job endpoint that returns a list of jobs.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by job type.
+      tags:
+        - Job
+      responses:
+        200:
+          description: An array of Jobs
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Job'
+  /job/{identifier}:
+    get:
+      summary: List Job
+      description: |
+        The Job endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Job.
+          required: true
+          type: string
+      tags:
+        - Job
+      responses:
+        200:
+          description: A single job
+          schema:
+            $ref: '#/definitions/Job'
+    delete:
+      summary: Delete a Job
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Job.
+          required: true
+          type: string
+      tags:
+        - Job
+      responses:
+        204:
+          description: The Job has been deleted.
+    post:
+      summary: Update a Job
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Job.
+          required: true
+          type: string
+        - name: job
+          in: body
+          description: The payload of the Job to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Job'
+      tags:
+        - Job
+      responses:
+        201:
+          description: The Job has been updated.
+  /job:
+    put:
+      summary: Create a Job
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: job
+          in: body
+          description: The unique identifier of a Job.
+          required: true
+          schema:
+            $ref: '#/definitions/Job'
+      tags:
+        - Job
+      responses:
+        201:
+          description: The Job has been created.
+  /applications:
+    get:
+      summary: List Applications
+      description: |
+        Application endpoint that returns a list of applications.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by application type.
+      tags:
+        - Application
+      responses:
+        200:
+          description: An array of Applications
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Application'
+  /application/{identifier}:
+    get:
+      summary: List Application
+      description: |
+        The Application endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Application.
+          required: true
+          type: string
+      tags:
+        - Application
+      responses:
+        200:
+          description: A single application
+          schema:
+            $ref: '#/definitions/Application'
+    delete:
+      summary: Delete a Application
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Application.
+          required: true
+          type: string
+      tags:
+        - Application
+      responses:
+        204:
+          description: The Application has been deleted.
+    post:
+      summary: Update a Application
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Application.
+          required: true
+          type: string
+        - name: application
+          in: body
+          description: The payload of the Application to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Application'
+      tags:
+        - Application
+      responses:
+        201:
+          description: The Application has been updated.
+  /application:
+    put:
+      summary: Create a Application
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: application
+          in: body
+          description: The unique identifier of a Application.
+          required: true
+          schema:
+            $ref: '#/definitions/Application'
+      tags:
+        - Application
+      responses:
+        201:
+          description: The Application has been created.
+  /interview:
+    put:
+      summary: Create a Interview
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: interview
+          in: body
+          description: The unique identifier of a Interview.
+          required: true
+          schema:
+            $ref: '#/definitions/Interview'
+      tags:
+        - Interview
+      responses:
+        201:
+          description: The Interview has been created.
+  /notifications:
+    get:
+      summary: List Notifications
+      description: |
+        Notification endpoint that returns a list of notifications.  
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: type
+          in: query
+          type: string
+          description: Limit list by notification type.
+      tags:
+        - Notification
+      responses:
+        200:
+          description: An array of Notifications
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Notification'
+  /notification/{identifier}:
+    get:
+      summary: List Notification
+      description: |
+        The Notification endpoint that returns
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Notification.
+          required: true
+          type: string
+      tags:
+        - Notification
+      responses:
+        200:
+          description: A single notification
+          schema:
+            $ref: '#/definitions/Notification'
+    delete:
+      summary: Delete a Notification
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Notification.
+          required: true
+          type: string
+      tags:
+        - Notification
+      responses:
+        204:
+          description: The Notification has been deleted.
+    post:
+      summary: Update a Notification
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: identifier
+          in: path
+          description: The unique identifier of a Notification.
+          required: true
+          type: string
+        - name: notification
+          in: body
+          description: The payload of the Notification to be updated.
+          required: true
+          schema:
+            $ref: '#/definitions/Notification'
+      tags:
+        - Notification
+      responses:
+        201:
+          description: The Notification has been updated.
+  /notification:
+    put:
+      summary: Create a Notification
+      description: |
+        Something interesting goes here.
+      parameters:
+        - name: authToken
+          in: header
+          description: Authentication token passed with all requests.
+          required: true
+          type: string
+        - name: notification
+          in: body
+          description: The unique identifier of a Notification.
+          required: true
+          schema:
+            $ref: '#/definitions/Notification'
+      tags:
+        - Notification
+      responses:
+        201:
+          description: The Notification has been created.
+definitions:
+  User:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific User.
+  Contact:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Company Contact.
+      type:
+        type: string
+        description: The Contact type.
+  ContactCompany:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Company Contact.
+  ContactPerson:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Person Contact.
+  Document:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Document.
+      type:
+        type: string
+        description: The Document type.
+  DocumentCoverLetter:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Cover Letter Document.
+  DocumentResume:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Resume Document.
+  Job:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Job.
+  Application:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Application.
+  Interview:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Interview.
+  Notification:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Notification.
