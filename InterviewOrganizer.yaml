@@ -19,7 +19,7 @@ paths:
     get:
       summary: List Users
       description: |
-        User endpoint that returns a list of users.  
+        User endpoint that returns a list of users.
       parameters:
         - name: authToken
           in: header
@@ -130,126 +130,11 @@ paths:
       responses:
         201:
           description: The User has been created.
-  /contacts:
-    get:
-      summary: List Contacts
-      description: |
-        Contact endpoint that returns a list of contacts.  
-      parameters:
-        - name: authToken
-          in: header
-          description: Authentication token passed with all requests.
-          required: true
-          type: string
-        - name: type
-          in: query
-          type: string
-          description: Limit list by contact type.
-      tags:
-        - Contact
-      responses:
-        200:
-          description: An array of Contacts
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Contact'
-  /contact/{identifier}:
-    get:
-      summary: List Contact
-      description: |
-        The Contact endpoint that returns
-      parameters:
-        - name: authToken
-          in: header
-          description: Authentication token passed with all requests.
-          required: true
-          type: string
-        - name: identifier
-          in: path
-          description: The unique identifier of a Contact.
-          required: true
-          type: string
-      tags:
-        - Contact
-      responses:
-        200:
-          description: A single contact
-          schema:
-            $ref: '#/definitions/Contact'
-    delete:
-      summary: Delete a Contact
-      description: |
-        Something interesting goes here.
-      parameters:
-        - name: authToken
-          in: header
-          description: Authentication token passed with all requests.
-          required: true
-          type: string
-        - name: identifier
-          in: path
-          description: The unique identifier of a Contact.
-          required: true
-          type: string
-      tags:
-        - Contact
-      responses:
-        204:
-          description: The Contact has been deleted.
-    post:
-      summary: Update a Contact
-      description: |
-        Something interesting goes here.
-      parameters:
-        - name: authToken
-          in: header
-          description: Authentication token passed with all requests.
-          required: true
-          type: string
-        - name: identifier
-          in: path
-          description: The unique identifier of a Contact.
-          required: true
-          type: string
-        - name: contact
-          in: body
-          description: The payload of the Contact to be updated.
-          required: true
-          schema:
-            $ref: '#/definitions/Contact'
-      tags:
-        - Contact
-      responses:
-        201:
-          description: The Contact has been updated.
-  /contact:
-    put:
-      summary: Create a Contact
-      description: |
-        Something interesting goes here.
-      parameters:
-        - name: authToken
-          in: header
-          description: Authentication token passed with all requests.
-          required: true
-          type: string
-        - name: contact
-          in: body
-          description: The unique identifier of a Contact.
-          required: true
-          schema:
-            $ref: '#/definitions/Contact'
-      tags:
-        - Contact
-      responses:
-        201:
-          description: The Contact has been created.
   /contact/Companies:
     get:
       summary: List Company Contacts
       description: |
-        Contact endpoint that returns a list of contacts.  
+        Contact endpoint that returns a list of contacts.
       parameters:
         - name: authToken
           in: header
@@ -364,7 +249,7 @@ paths:
     get:
       summary: List Person Contacts
       description: |
-        Contact endpoint that returns a list of contacts.  
+        Contact endpoint that returns a list of contacts.
       parameters:
         - name: authToken
           in: header
@@ -479,7 +364,7 @@ paths:
     get:
       summary: List Documents
       description: |
-        Document endpoint that returns a list of documents.  
+        Document endpoint that returns a list of documents.
       parameters:
         - name: authToken
           in: header
@@ -594,7 +479,7 @@ paths:
     get:
       summary: List Cover Letter Documents
       description: |
-        Document endpoint that returns a list of documents.  
+        Document endpoint that returns a list of documents.
       parameters:
         - name: authToken
           in: header
@@ -709,7 +594,7 @@ paths:
     get:
       summary: List Resume Documents
       description: |
-        Document endpoint that returns a list of documents.  
+        Document endpoint that returns a list of documents.
       parameters:
         - name: authToken
           in: header
@@ -824,7 +709,7 @@ paths:
     get:
       summary: List Interviews
       description: |
-        Interview endpoint that returns a list of interviews.  
+        Interview endpoint that returns a list of interviews.
       parameters:
         - name: authToken
           in: header
@@ -917,7 +802,7 @@ paths:
     get:
       summary: List Jobs
       description: |
-        Job endpoint that returns a list of jobs.  
+        Job endpoint that returns a list of jobs.
       parameters:
         - name: authToken
           in: header
@@ -1032,7 +917,7 @@ paths:
     get:
       summary: List Applications
       description: |
-        Application endpoint that returns a list of applications.  
+        Application endpoint that returns a list of applications.
       parameters:
         - name: authToken
           in: header
@@ -1169,7 +1054,7 @@ paths:
     get:
       summary: List Notifications
       description: |
-        Notification endpoint that returns a list of notifications.  
+        Notification endpoint that returns a list of notifications.
       parameters:
         - name: authToken
           in: header
@@ -1287,27 +1172,145 @@ definitions:
       identifier:
         type: string
         description: Unique identifier representing a specific User.
-  Contact:
-    type: object
-    properties:
-      identifier:
+      first_name:
         type: string
-        description: Unique identifier representing a specific Company Contact.
-      type:
+      last_name:
         type: string
-        description: The Contact type.
+      email_address:
+        type: string
+      is_deleted:
+        type: boolean
+      roles:
+        type: array
+        items:
+          type: string
+    required:
+      - first_name
+      - last_name
+      - email_address
+      - is_deleted
+      - roles
   ContactCompany:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Company Contact.
+      addresses:
+        type: array
+        items:
+          $ref: '#/definitions/ContactCompanyAddress'
+      phone_numbers:
+        type: array
+        items:
+          $ref: '#/definitions/ContactCompanyPhone'
+  ContactCompanyAddress:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Company Contact Address.
+      name:
+        type: string
+      address_line_1:
+        type: string
+      address_line_2:
+        type: string
+      address_line_3:
+        type: string
+      city:
+        type: string
+      state_provinence:
+        type: string
+      country:
+        type: string
+      postal_zip_code:
+        type: integer
+    required:
+      - address_line_1
+      - address_line_2
+      - address_line_3
+      - city
+      - state_provinence
+      - country
+      - postal_zip_code
+  ContactCompanyPhone:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Company Contact Phone.
+      name:
+        type: string
+      phone_number:
+        type: string
+    required:
+      - name
+      - phone_number
   ContactPerson:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Person Contact.
+      first_name:
+        type: string
+      last_name:
+        type: string
+      addresses:
+        type: array
+        items:
+          $ref: '#/definitions/ContactPersonAddress'
+      emails:
+        type: array
+        items:
+          $ref: '#/definitions/ContactPersonEMail'
+      phone_numbers:
+        type: array
+        items:
+          $ref: '#/definitions/ContactPersonPhone'
+  ContactPersonAddress:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Person Contact Address.
+      name:
+        type: string
+      address_line_1:
+        type: string
+      address_line_2:
+        type: string
+      address_line_3:
+        type: string
+      city:
+        type: string
+      state_provinence:
+        type: string
+      country:
+        type: string
+      postal_zip_code:
+        type: integer
+  ContactPersonEMail:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Person Contact E-Mail Address.
+      name:
+        type: string
+      email_address:
+        type: string
+  ContactPersonPhone:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: Unique identifier representing a specific Person Contact Phone.
+      name:
+        type: string
+      phone_number:
+        type: string
   Document:
     type: object
     properties:
@@ -1317,39 +1320,86 @@ definitions:
       type:
         type: string
         description: The Document type.
+      name:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      object_uri:
+        type: string
   DocumentCoverLetter:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Cover Letter Document.
+      name:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      object_uri:
+        type: string
   DocumentResume:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Resume Document.
+      name:
+        type: string
+      version:
+        type: string
+      description:
+        type: string
+      object_uri:
+        type: string
   Job:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Job.
+      title:
+        type: string
+      description:
+        type: string
+      remote_URI:
+        type: string
+      status:
+        type: string
   Application:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Application.
+      submitted_datetime:
+        type: string
+        format: date-time
   Interview:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Interview.
+      scheduled_datetime:
+        type: string
+        format: date-time
+      notes:
+        type: string
   Notification:
     type: object
     properties:
       identifier:
         type: string
         description: Unique identifier representing a specific Notification.
+      creation_date:
+        type: string
+        format: date-time
+      payload:
+        type: string
+      is_acknowledged:
+        type: boolean
