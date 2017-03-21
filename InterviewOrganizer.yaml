@@ -1183,13 +1183,38 @@ definitions:
       roles:
         type: array
         items:
-          type: string
+          $ref: '#/definitions/UserRole'
+      contactMethods:
+        type: array
+        items:
+          $ref: '#/definitions/UserContactMethod'
     required:
       - first_name
       - last_name
       - email_address
       - is_deleted
       - roles
+      - contactMethods
+  UserContactMethod:
+    type: object
+    properties:
+      identifier:
+        type: string
+      type:
+        type: string
+      uri:
+        type: string
+    required:
+      - identifier
+      - type
+      - uri
+  UserRole:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
   ContactCompany:
     type: object
     properties:
