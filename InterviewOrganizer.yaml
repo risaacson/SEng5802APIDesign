@@ -64,8 +64,6 @@ paths:
             $ref: '#/definitions/User'
     delete:
       summary: Delete a User
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -84,8 +82,6 @@ paths:
           description: The User has been deleted.
     post:
       summary: Update a User
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -111,8 +107,6 @@ paths:
   /user:
     put:
       summary: Create a User
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -179,8 +173,6 @@ paths:
             $ref: '#/definitions/ContactCompany'
     delete:
       summary: Delete a Company Contact
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -199,8 +191,6 @@ paths:
           description: The Company Contact has been deleted.
     post:
       summary: Update a Company Contact
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -226,8 +216,6 @@ paths:
   /contact/company/:
     put:
       summary: Create a Company Contact
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -294,8 +282,6 @@ paths:
             $ref: '#/definitions/ContactPerson'
     delete:
       summary: Delete a Person Contact
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -314,8 +300,6 @@ paths:
           description: The Person Contact has been deleted.
     post:
       summary: Update a Person Contact
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -341,8 +325,6 @@ paths:
   /contact/person:
     put:
       summary: Create a Person Contact
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -409,8 +391,6 @@ paths:
             $ref: '#/definitions/Document'
     delete:
       summary: Delete a Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -429,8 +409,6 @@ paths:
           description: The Document has been deleted.
     post:
       summary: Update a Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -456,8 +434,6 @@ paths:
   /document:
     put:
       summary: Create a Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -524,8 +500,6 @@ paths:
             $ref: '#/definitions/DocumentCoverLetter'
     delete:
       summary: Delete a Cover Letter Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -544,8 +518,6 @@ paths:
           description: The Cover Letter Document has been deleted.
     post:
       summary: Update a Cover Letter Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -571,8 +543,6 @@ paths:
   /document/coverLetter:
     put:
       summary: Create a Cover Letter Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -639,8 +609,6 @@ paths:
             $ref: '#/definitions/DocumentResume'
     delete:
       summary: Delete a Resume Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -659,8 +627,6 @@ paths:
           description: The Resume Document has been deleted.
     post:
       summary: Update a Resume Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -686,8 +652,6 @@ paths:
   /document/resume:
     put:
       summary: Create a Resume Document
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -754,8 +718,6 @@ paths:
             $ref: '#/definitions/Interview'
     delete:
       summary: Delete a Interview
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -774,8 +736,6 @@ paths:
           description: The Interview has been deleted.
     post:
       summary: Update a Interview
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -847,8 +807,6 @@ paths:
             $ref: '#/definitions/Job'
     delete:
       summary: Delete a Job
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -867,8 +825,6 @@ paths:
           description: The Job has been deleted.
     post:
       summary: Update a Job
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -894,8 +850,6 @@ paths:
   /job:
     put:
       summary: Create a Job
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -962,8 +916,6 @@ paths:
             $ref: '#/definitions/Application'
     delete:
       summary: Delete a Application
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -982,8 +934,6 @@ paths:
           description: The Application has been deleted.
     post:
       summary: Update a Application
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -1009,8 +959,6 @@ paths:
   /application:
     put:
       summary: Create a Application
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -1031,8 +979,6 @@ paths:
   /interview:
     put:
       summary: Create a Interview
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -1099,8 +1045,6 @@ paths:
             $ref: '#/definitions/Notification'
     delete:
       summary: Delete a Notification
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -1119,8 +1063,6 @@ paths:
           description: The Notification has been deleted.
     post:
       summary: Update a Notification
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
@@ -1146,8 +1088,6 @@ paths:
   /notification:
     put:
       summary: Create a Notification
-      description: |
-        Something interesting goes here.
       parameters:
         - name: authToken
           in: header
