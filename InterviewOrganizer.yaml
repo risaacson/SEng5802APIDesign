@@ -124,7 +124,7 @@ paths:
       responses:
         201:
           description: The User has been created.
-  /contact/Companies:
+  /contact/companies:
     get:
       summary: List Company Contacts
       description: |
